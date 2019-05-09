@@ -1,5 +1,5 @@
 locals {
-  function_name   = "aes128-key-rot"
+  function_name = "aes128-key-rot"
 }
 
 resource "aws_lambda_function" "default" {
