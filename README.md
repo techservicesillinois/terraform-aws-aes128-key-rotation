@@ -1,5 +1,7 @@
 # aes128-key-rotation
 
+[![Build Status](https://drone.techservices.illinois.edu/api/badges/techservicesillinois/terraform-aws-aes128-key-rotation/status.svg)](https://drone.techservices.illinois.edu/techservicesillinois/terraform-aws-aes128-key-rotation)
+
 Provides a lambda function to generate base64 encoded AES128 keys
 for [Secret Manager](https://aws.amazon.com/secrets-manager/).
 
