@@ -2,13 +2,23 @@
 
 [![Build Status](https://drone.techservices.illinois.edu/api/badges/techservicesillinois/terraform-aws-aes128-key-rotation/status.svg)](https://drone.techservices.illinois.edu/techservicesillinois/terraform-aws-aes128-key-rotation)
 
-Provides a lambda function to generate base64 encoded AES128 keys
-for [Secret Manager](https://aws.amazon.com/secrets-manager/).
+Provides a lambda function, IAM role, and policy to generate base64 encoded AES128 keys
+for [Secret Manager](https://aws.amazon.com/secrets-manager/). This
+may be used with module
+[shibd-data-sealer](https://github.com/techservicesillinois/terraform-aws-shibd-data-sealer).
 
 Argument Reference
 -----------------
 
-No arguments are supported.
+The following arguments are supported:
+
+* `name` - Lambda function name (Default aes128-key-rot).
+
+* `role` - Role name (Default AWSLambdaSecretManagerRole).
+
+* `policy` - Policy name (Default AWSLambdaSecretManager).
+
+* `runtime` - Lambda runtime (Default python3.8).
 
 Attributes Reference
 --------------------
@@ -19,10 +29,3 @@ The following attributes are exported:
 Lambda Function Version.
 
 * `version` - Latest published version of your Lambda Function.
-
-Credits
---------------------
-
-**Nota bene** the vast majority of the verbiage on this page was
-taken directly from the Terraform manual, and in a few cases from
-Amazon's documentation.
