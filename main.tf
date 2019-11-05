@@ -3,16 +3,16 @@ locals {
 }
 
 resource "aws_lambda_function" "default" {
-  function_name = "${local.function_name}"
+  function_name = local.function_name
   description   = "Generate random AES 128 keys"
   handler       = "lambda.lambda_handler"
-  publish       = "true"
+  publish       = true
 
-  role    = "${aws_iam_role.default.arn}"
+  role    = aws_iam_role.default.arn
   runtime = "python3.6"
 
-  filename         = "${data.archive_file.selected.output_path}"
-  source_code_hash = "${data.archive_file.selected.output_base64sha256}"
+  filename         = data.archive_file.selected.output_path
+  source_code_hash = data.archive_file.selected.output_base64sha256
 
   environment {
     variables = {
@@ -28,5 +28,5 @@ resource "aws_lambda_permission" "allow_secrets_manager" {
   principal = "secretsmanager.amazonaws.com"
   action    = "lambda:InvokeFunction"
 
-  function_name = "${aws_lambda_function.default.function_name}"
+  function_name = aws_lambda_function.default.function_name
 }
