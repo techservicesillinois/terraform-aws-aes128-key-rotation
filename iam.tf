@@ -1,5 +1,5 @@
 resource "aws_iam_role" "default" {
-  name               = "AWSLambdaSecretManagerRole"
+  name               = var.role
   assume_role_policy = data.aws_iam_policy_document.lambda.json
 }
 
@@ -14,7 +14,7 @@ resource "aws_iam_role_policy_attachment" "default" {
 }
 
 resource "aws_iam_policy" "default" {
-  name   = "AWSLambdaSecretManage"
+  name   = var.policy
   path   = "/"
   policy = data.aws_iam_policy_document.default.json
 }
@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "default" {
       test     = "StringEquals"
       variable = "secretsmanager:resource/AllowRotationLambdaArn"
 
-      values = ["arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:function:${local.function_name}"]
+      values = [aws_lambda_function.default.arn]
     }
 
     actions = [
