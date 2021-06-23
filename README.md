@@ -1,6 +1,6 @@
 # aes128-key-rotation
 
-[![Build Status](https://drone.techservices.illinois.edu/api/badges/techservicesillinois/terraform-aws-aes128-key-rotation/status.svg)](https://drone.techservices.illinois.edu/techservicesillinois/terraform-aws-aes128-key-rotation)
+[![Terraform actions status](https://github.com/techservicesillinois/terraform-aws-aes128-key-rotation/workflows/terraform/badge.svg)](https://github.com/techservicesillinois/terraform-aws-aes128-key-rotation/actions)
 
 Provides a lambda function, IAM role, and policy to generate base64 encoded AES128 keys
 for [Secret Manager](https://aws.amazon.com/secrets-manager/). This
@@ -26,6 +26,6 @@ Attributes Reference
 The following attributes are exported:
 
 * `qualified_arn` - The Amazon Resource Name (ARN) identifying your
-Lambda Function Version.
+Lambda function version.
 
-* `version` - Latest published version of your Lambda Function.
+* `version` - Latest published version of your Lambda function.
